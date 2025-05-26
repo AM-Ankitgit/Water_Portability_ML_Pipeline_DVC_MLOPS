@@ -64,10 +64,10 @@ def save_metrics(metrics:dict,metrics_path:str) -> None:
     
 def main():
     try:
-        test_data_path = "/media/brainwired/D/BW_ML/01_AUG_FARM_TEST/study/DVC_ML/data/processed/test_processed_mean.csv"
-        # test_data_path = "/data/processed/test_processed_mean.csv"
-        model_path = "models/model.pkl"
-        metrics_path = "reports/metrics.json"
+        test_data_path = "/media/brainwired/D/BW_ML/01_AUG_FARM_TEST/study/DVC_ML/data/processed/test_processed_median.csv"
+        # test_data_path = "/data/processed/test_processed_median.csv"
+        model_path = "models/model_median.pkl"
+        metrics_path = "reports/metrics_median.json"
 
         test_data = load_data(test_data_path)
         X_test,y_test = prepare_data(test_data)
