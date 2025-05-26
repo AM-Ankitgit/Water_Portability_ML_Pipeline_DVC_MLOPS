@@ -64,14 +64,18 @@ def save_metrics(metrics:dict,metrics_path:str) -> None:
     
 def main():
     try:
-        test_data_path = "/media/brainwired/D/BW_ML/01_AUG_FARM_TEST/study/DVC_ML/data/processed/test_processed_median.csv"
+        test_data_path = "/media/brainwired/D/BW_ML/01_AUG_FARM_TEST/study/Water_Portability_ML_Pipeline_DVC_MLOPS/data/processed/test_processed_median.csv"
         # test_data_path = "/data/processed/test_processed_median.csv"
         model_path = "models/model_median.pkl"
         metrics_path = "reports/metrics_median.json"
 
+        # pd.read_csv(test_data)
         test_data = load_data(test_data_path)
+        # print(test_data)
         X_test,y_test = prepare_data(test_data)
         model = load_model(model_path)
+
+        
         metrics = evaluation_model(model,X_test,y_test)
         save_metrics(metrics,metrics_path)
     except Exception as e:

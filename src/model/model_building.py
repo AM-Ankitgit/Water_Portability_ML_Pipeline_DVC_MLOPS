@@ -54,6 +54,7 @@ def main():
         save_model(model, model_name)
         print("Model trained and saved successfully!")
     except Exception as e:
+        
         print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
