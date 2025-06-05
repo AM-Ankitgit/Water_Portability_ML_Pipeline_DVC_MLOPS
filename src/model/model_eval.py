@@ -3,6 +3,7 @@ import pandas as pd
 
 import pickle
 import json
+from pathlib import Path
 
 from sklearn.metrics import accuracy_score,precision_score,recall_score,f1_score
 
@@ -64,7 +65,7 @@ def save_metrics(metrics:dict,metrics_path:str) -> None:
     
 def main():
     try:
-        test_data_path = "/media/brainwired/D/BW_ML/01_AUG_FARM_TEST/study/Water_Portability_ML_Pipeline_DVC_MLOPS/data/processed/test_processed_median.csv"
+        test_data_path = Path("data/processed/test_processed_median.csv")
         # test_data_path = "/data/processed/test_processed_median.csv"
         model_path = "models/model_median.pkl"
         metrics_path = "reports/metrics_median.json"

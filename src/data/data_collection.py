@@ -1,7 +1,8 @@
-import pandas as pd
+# import pandas as pd
 import numpy as np
 import os
 from sklearn.model_selection import train_test_split
+import pandas as pd
 
 
 
@@ -20,6 +21,8 @@ import numpy as np
 import os
 from sklearn.model_selection import train_test_split
 import yaml
+from pathlib import Path
+
 
 
 def load_params(filepath : str) -> float:
@@ -59,7 +62,7 @@ def save_data(df : pd.DataFrame, filepath: str) -> None:
     
 
 def main():
-    data_filepath = "/media/brainwired/D/BW_ML/01_AUG_FARM_TEST/study/DVC_ML/data/water_potability.csv"
+    data_filepath = Path("data/water_potability.csv")
     params_filepath = "params.yaml"
     raw_data_path = os.path.join("data","raw")
 # data_path = os.path.join("data","raw")

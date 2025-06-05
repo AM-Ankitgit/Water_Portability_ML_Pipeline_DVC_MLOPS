@@ -5,6 +5,7 @@ __pycache__/
 # C extensions
 *.so
 newvenv/
+watervenv/
 # Distribution / packaging
 .Python
 env/

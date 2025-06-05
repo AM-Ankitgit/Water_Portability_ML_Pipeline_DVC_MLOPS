@@ -1,6 +1,6 @@
 stages:
   data_collection:
-    cmd: python3 src/data/data_collection.py
+    cmd: python src/data/data_collection.py
     deps:
     - src/data/data_collection.py
     params:
@@ -8,14 +8,14 @@ stages:
     outs:
     - data/raw/
   pre_processing:
-    cmd: python3 src/data/data_prep.py
+    cmd: python src/data/data_prep.py
     deps:
     - data/raw/
     - src/data/data_prep.py
     outs:
     - data/processed/
   model_building:
-    cmd: python3 src/model/model_building.py
+    cmd: python src/model/model_building.py
     deps:
     - data/processed/
     - src/model/model_building.py
@@ -24,7 +24,7 @@ stages:
     outs:
     - models/model_median.pkl
   model_eval:
-    cmd: python3 src/model/model_eval.py
+    cmd: python src/model/model_eval.py
     deps:
     - models/model_median.pkl
     - src/model/model_eval.py

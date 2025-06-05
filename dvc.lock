@@ -1,72 +1,72 @@
 schema: '2.0'
 stages:
   data_collection:
-    cmd: python3 src/data/data_collection.py
+    cmd: python src/data/data_collection.py
     deps:
     - path: src/data/data_collection.py
       hash: md5
-      md5: 36dd14de9ce61f2d66a4450bd68c564e
-      size: 2510
+      md5: c2b4f1406fc9b9cf47e028926af8e5a8
+      size: 2589
     params:
       params.yaml:
         data_collection.test_size: 0.2
     outs:
     - path: data/raw/
       hash: md5
-      md5: 6943e655800134f51910892c621c7b98.dir
-      size: 518984
+      md5: c0c2d65c14a603e91e029fda3c344a5c.dir
+      size: 522262
       nfiles: 2
   pre_processing:
-    cmd: python3 src/data/data_prep.py
+    cmd: python src/data/data_prep.py
     deps:
     - path: data/raw/
       hash: md5
-      md5: 6943e655800134f51910892c621c7b98.dir
-      size: 518984
+      md5: c0c2d65c14a603e91e029fda3c344a5c.dir
+      size: 522262
       nfiles: 2
     - path: src/data/data_prep.py
       hash: md5
-      md5: 56ac4b52fb70e8ccef57d428d524e709
-      size: 1989
+      md5: 1f4cd217a82a6b0cb48f562dcb63feb7
+      size: 1937
     outs:
     - path: data/processed/
       hash: md5
-      md5: 7dc9ba91ca99bc0fb0a4e320438295f0.dir
-      size: 543617
+      md5: f6403060b57a0e939d011dd7583ebff8.dir
+      size: 546895
       nfiles: 2
   model_building:
-    cmd: python3 src/model/model_building.py
+    cmd: python src/model/model_building.py
     deps:
     - path: data/processed/
       hash: md5
-      md5: 7dc9ba91ca99bc0fb0a4e320438295f0.dir
-      size: 543617
+      md5: f6403060b57a0e939d011dd7583ebff8.dir
+      size: 546895
       nfiles: 2
     - path: src/model/model_building.py
       hash: md5
-      md5: 7d938ab0136d231da4cede7cc106593e
-      size: 1987
+      md5: 98eab82c4332389cdf1cce22b39a6c36
+      size: 2047
     params:
       params.yaml:
         model_building.n_estimators: 50
     outs:
     - path: models/model_median.pkl
       hash: md5
-      md5: 9a63626b5d6936ecdfd4ade281b7fc76
-      size: 3675901
+      md5: 300ad9f50d900470ef2e8bd9c0caaf93
+      size: 3687867
   model_eval:
-    cmd: python3 src/model/model_eval.py
+    cmd: python src/model/model_eval.py
     deps:
     - path: models/model_median.pkl
       hash: md5
-      md5: 9a63626b5d6936ecdfd4ade281b7fc76
-      size: 3675901
+      md5: 300ad9f50d900470ef2e8bd9c0caaf93
+      size: 3687867
     - path: src/model/model_eval.py
       hash: md5
-      md5: 99456be2ac06fd4171a10337e23760c5
-      size: 2623
+      md5: 6bd8acae33d100aba4c38f43af1efcfa
+      size: 2652
     outs:
     - path: reports/metrics_median.json
       hash: md5
-      md5: 2eafa772a35accdc73df540feb892711
-      size: 142
+      md5: 310798805c3b682527ba463bc66d0c4e
+      size: 146

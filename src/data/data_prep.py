@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import os
+from pathlib import Path
 
 
 def load_data(filepath : str) -> pd.DataFrame:
@@ -34,8 +35,8 @@ def save_data(df : pd.DataFrame, filepath: str) -> None:
 def main():
     try:
         # "../data/raw/TEST.CSV"
-        raw_data_path = "/media/brainwired/D/BW_ML/01_AUG_FARM_TEST/study/DVC_ML/data/raw"
-        processed_data_path = "/media/brainwired/D/BW_ML/01_AUG_FARM_TEST/study/Water_Portability_ML_Pipeline_DVC_MLOPS/data/processed"
+        raw_data_path = Path("data/raw")
+        processed_data_path = Path("data/processed")
 
         train_data = load_data(os.path.join(raw_data_path,"train.csv"))
         test_data = load_data(os.path.join(raw_data_path,"test.csv"))
