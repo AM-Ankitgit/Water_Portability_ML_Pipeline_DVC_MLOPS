@@ -44,29 +44,29 @@ stages:
       nfiles: 2
     - path: src/model/model_building.py
       hash: md5
-      md5: 98eab82c4332389cdf1cce22b39a6c36
-      size: 2047
+      md5: f782cb8a7d271bf5faded53ff61a4e85
+      size: 3805
     params:
       params.yaml:
-        model_building.n_estimators: 100
+        model_building.n_estimators: 300
     outs:
     - path: models/model_median.pkl
       hash: md5
-      md5: 2b27b8b225c07973f09462ece7c25a82
-      size: 8223027
+      md5: 72247078005ae6f06ce463550d030ac8
+      size: 276647
   model_eval:
     cmd: python src/model/model_eval.py
     deps:
     - path: models/model_median.pkl
       hash: md5
-      md5: 2b27b8b225c07973f09462ece7c25a82
-      size: 8223027
+      md5: 72247078005ae6f06ce463550d030ac8
+      size: 276647
     - path: src/model/model_eval.py
       hash: md5
-      md5: dab8f40594753bfccd0d91768d384f01
-      size: 3408
+      md5: 7ce0bf444e8b63cdba2a8702ee46f6f6
+      size: 3677
     outs:
     - path: reports/metrics_median.json
       hash: md5
-      md5: 5e16aa56804ad28adfd9e3694e1f9fc0
-      size: 146
+      md5: dee86071b4929cc4fb44b890976d7875
+      size: 117

@@ -56,9 +56,11 @@ def evaluation_model(model, X_test:pd.DataFrame, y_test:pd.Series) -> dict:
 
         
         import mlflow
-
-        mlflow.set_experiment("Test Exp1")
-        mlflow.set_tracking_uri("http://127.0.0.1:5000/")
+        import dagshub
+        
+        dagshub.init(repo_owner='AM-Ankitgit', repo_name='Water_Portability_ML_Pipeline_DVC_MLOPS', mlflow=True)
+        mlflow.set_experiment("TestingData Exp1")
+        mlflow.set_tracking_uri("https://dagshub.com/AM-Ankitgit/Water_Portability_ML_Pipeline_DVC_MLOPS.mlflow")
         
         with mlflow.start_run():
             mlflow.log_metric("acc",acc)
@@ -69,7 +71,7 @@ def evaluation_model(model, X_test:pd.DataFrame, y_test:pd.Series) -> dict:
             mlflow.log_artifact("Confusion metrics.png")
             mlflow.log_artifact(__file__)
             mlflow.set_tag("author",'Ankit')
-            mlflow.set_tag("Random Forest")
+            
             
 
         metrics_dict = {
