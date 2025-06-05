@@ -1,0 +1,15 @@
+artifact_uri: file:///F:/study/Water_Portability_ML_Pipeline_DVC_MLOPS/mlruns/418934695156622863/4d2aa9a15cba4fb8a5141097a17cc699/artifacts
+end_time: 1749118835283
+entry_point_name: ''
+experiment_id: '418934695156622863'
+lifecycle_stage: active
+run_id: 4d2aa9a15cba4fb8a5141097a17cc699
+run_name: intelligent-tern-856
+run_uuid: 4d2aa9a15cba4fb8a5141097a17cc699
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749118835132
+status: 3
+tags: []
+user_id: ANKIT

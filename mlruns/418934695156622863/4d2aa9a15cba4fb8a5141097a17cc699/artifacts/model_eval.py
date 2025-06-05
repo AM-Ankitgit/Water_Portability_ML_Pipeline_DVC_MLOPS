@@ -68,8 +68,6 @@ def evaluation_model(model, X_test:pd.DataFrame, y_test:pd.Series) -> dict:
 
             mlflow.log_artifact("Confusion metrics.png")
             mlflow.log_artifact(__file__)
-            mlflow.set_tag("author",'Ankit')
-            mlflow.set_tag("Random Forest")
             
 
         metrics_dict = {

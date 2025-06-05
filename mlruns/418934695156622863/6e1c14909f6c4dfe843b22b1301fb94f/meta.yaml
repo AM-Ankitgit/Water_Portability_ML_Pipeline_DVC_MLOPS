@@ -1,0 +1,15 @@
+artifact_uri: file:///F:/study/Water_Portability_ML_Pipeline_DVC_MLOPS/mlruns/418934695156622863/6e1c14909f6c4dfe843b22b1301fb94f/artifacts
+end_time: 1749116965661
+entry_point_name: ''
+experiment_id: '418934695156622863'
+lifecycle_stage: active
+run_id: 6e1c14909f6c4dfe843b22b1301fb94f
+run_name: learned-goose-152
+run_uuid: 6e1c14909f6c4dfe843b22b1301fb94f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749116965610
+status: 3
+tags: []
+user_id: ANKIT

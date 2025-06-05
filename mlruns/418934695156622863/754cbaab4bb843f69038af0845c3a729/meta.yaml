@@ -1,0 +1,15 @@
+artifact_uri: file:///F:/study/Water_Portability_ML_Pipeline_DVC_MLOPS/mlruns/418934695156622863/754cbaab4bb843f69038af0845c3a729/artifacts
+end_time: 1749118325086
+entry_point_name: ''
+experiment_id: '418934695156622863'
+lifecycle_stage: active
+run_id: 754cbaab4bb843f69038af0845c3a729
+run_name: grandiose-finch-323
+run_uuid: 754cbaab4bb843f69038af0845c3a729
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749118324925
+status: 3
+tags: []
+user_id: ANKIT

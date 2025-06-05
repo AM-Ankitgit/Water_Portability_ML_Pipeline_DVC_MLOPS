@@ -1,0 +1,15 @@
+artifact_uri: file:///F:/study/Water_Portability_ML_Pipeline_DVC_MLOPS/mlruns/418934695156622863/6c63a5f6009747379d00108bf5c697a3/artifacts
+end_time: 1749118496634
+entry_point_name: ''
+experiment_id: '418934695156622863'
+lifecycle_stage: active
+run_id: 6c63a5f6009747379d00108bf5c697a3
+run_name: aged-jay-585
+run_uuid: 6c63a5f6009747379d00108bf5c697a3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749118496449
+status: 4
+tags: []
+user_id: ANKIT
