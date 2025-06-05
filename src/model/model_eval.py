@@ -43,6 +43,16 @@ def evaluation_model(model, X_test:pd.DataFrame, y_test:pd.Series) -> dict:
         pre = precision_score(y_test,y_pred)
         recall = recall_score(y_test,y_pred)
         f1score = f1_score(y_test,y_pred)
+        
+        import mlflow
+
+        mlflow.set_experiment("Test Exp1")
+        
+        with mlflow.start_run():
+            mlflow.log_metric("acc",acc)
+            mlflow.log_metric("pre",pre)
+            mlflow.log_metric("recall",recall)
+            mlflow.log_metric("f1score",f1score)
 
         metrics_dict = {
 

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/062425b5c8c74e2aacabb6a4527f8a0c/artifacts
+end_time: 1749115449993
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 062425b5c8c74e2aacabb6a4527f8a0c
+run_name: abundant-chimp-775
+run_uuid: 062425b5c8c74e2aacabb6a4527f8a0c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749115449914
+status: 3
+tags: []
+user_id: ANKIT

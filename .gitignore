@@ -6,6 +6,9 @@ __pycache__/
 *.so
 newvenv/
 watervenv/
+.pkl/
+models\model_median.pkl
+models/model_median.pkl/
 # Distribution / packaging
 .Python
 env/
