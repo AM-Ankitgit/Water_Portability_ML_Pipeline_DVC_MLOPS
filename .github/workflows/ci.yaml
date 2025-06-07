@@ -1,29 +1,69 @@
+# name: CICD
+
+# on: push
+
+# jobs: 
+#     Continous-Intergration: 
+#                    runs-on: ubuntu-latest
+#                    steps:
+#                       - name: Checkout Code
+#                         uses: actions/checkout@v3
+
+#                       - name: Setup Python
+#                         uses: actions/setup-python@v4
+#                         with:
+#                           python-version: "3.12"
+                      
+#                       - name: Install Dependecies
+#                         run: |
+#                             python -m pip install --upgrade pip
+#                             pip install -r requirements.txt
+#                             pip install dvc
+                      
+#                       - name: DVC Authentication with DagsHub
+#                         env: 
+#                           DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
+#                         run: |
+#                           dvc repro
+
+
+
+
 name: CICD
 
 on: push
 
 jobs: 
-    Continous-Intergration: 
-                   runs-on: ubuntu-latest
-                   steps:
-                      - name: Checkout Code
-                        uses: actions/checkout@v3
+  Continuous-Integration: 
+    runs-on: ubuntu-latest
 
-                      - name: Setup Python
-                        uses: actions/setup-python@v4
-                        with:
-                          python-version: "3.12"
-                      
-                      - name: Install Dependecies
-                        run: |
-                            python -m pip install --upgrade pip
-                            pip install -r requirements.txt
-                            pip install dvc
-                      
-                      - name: DVC Authentication with DagsHub
-                        env: 
-                          DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
-                        run: |
-                          dvc repro
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+      
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install dvc
+      
+      - name: DVC Authentication with DagsHub
+        env: 
+          DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
+        run: |
+          dvc remote modify origin auth basic
+          dvc remote modify origin user AM-Ankitgit
+          dvc remote modify origin password "${DAGSHUB_TOKEN}"
+      
+      - name: Run DVC Pipeline
+        run: |
+          # dvc pull   # optional, to fetch data before repro
+          dvc repro
+
 
 
