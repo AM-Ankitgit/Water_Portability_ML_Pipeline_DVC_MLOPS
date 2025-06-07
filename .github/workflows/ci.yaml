@@ -96,7 +96,7 @@ jobs:
         env: 
           DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
         run: |
-          dvc remote add -f origin https://dagshub.com/AM-Ankitgit/Water_Portability_ML_Pipeline_DVC_MLOPS.dvc
+          dvc remote add -f origin https://dagshub.com/AM-Ankitgit/Water_Portability_ML_Pipeline_DVC_MLOPS
           dvc remote modify origin auth basic
           dvc remote modify origin user AM-Ankitgit
           dvc remote modify origin password "${DAGSHUB_TOKEN}"
