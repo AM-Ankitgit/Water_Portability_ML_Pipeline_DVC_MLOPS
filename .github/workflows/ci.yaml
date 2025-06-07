@@ -4,7 +4,7 @@ on: push
 
 jobs: 
     Continous-Intergration: 
-                   runs-on: ubnutu-latest
+                   runs-on: ubuntu-latest
                    steps:
                       - name: Checkout Code
                         uses: actions/checkout@v3
