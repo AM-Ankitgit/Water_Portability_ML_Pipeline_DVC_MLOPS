@@ -21,10 +21,8 @@ jobs:
                             pip install dvc
                       
                       - name: DVC Authentication with DagsHub
-                        env : 
+                        env: 
                           DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
-
-                      - name: Run CI
                         run: |
                           dvc repro
 
