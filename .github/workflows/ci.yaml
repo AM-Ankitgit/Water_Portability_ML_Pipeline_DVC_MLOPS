@@ -69,50 +69,79 @@
 
 
 
-name: CICD
+# name: CICD
+
+# on: push
+
+# jobs: 
+#   Continuous-Integration: 
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v3
+
+#       - name: Setup Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: "3.12"
+
+#       - name: Install Dependencies
+#         run: |
+#           python -m pip install --upgrade pip
+#           pip install -r requirements.txt
+#           pip install dvc
+
+#       - name: Configure DVC Remote (DagsHub)
+#         env: 
+#           DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
+#         run: |
+#           dvc remote add -f origin https://dagshub.com/AM-Ankitgit/Water_Portability_ML_Pipeline_DVC_MLOPS
+#           dvc remote modify origin auth basic
+#           dvc remote modify origin user AM-Ankitgit
+#           dvc remote modify origin password "${DAGSHUB_TOKEN}"
+
+#       - name: Set MLflow Tracking Environment Variables
+#         run: echo "MLflow config exported"
+#         env:
+#           MLFLOW_TRACKING_URI: https://dagshub.com/AM-Ankitgit/Water_Portability_ML_Pipeline_DVC_MLOPS.mlflow
+#           MLFLOW_TRACKING_USERNAME: AM-Ankitgit
+#           MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
+
+#       # - name: Pull DVC Data
+#       #   run: dvc pull
+
+#       - name: Run DVC Pipeline
+#         run: dvc repro
+
+#       # - name: Push Results to DVC Remote
+#       #   run: dvc push
+
+
+name: CI pipeline
 
 on: push
 
 jobs: 
-  Continuous-Integration: 
+  project-testing:
     runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Code
+    steps: 
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.12"
+          python-version: '3.10'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          pip install --upgrade pip
           pip install -r requirements.txt
           pip install dvc
-
-      - name: Configure DVC Remote (DagsHub)
-        env: 
-          DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
-        run: |
-          dvc remote add -f origin https://dagshub.com/AM-Ankitgit/Water_Portability_ML_Pipeline_DVC_MLOPS
-          dvc remote modify origin auth basic
-          dvc remote modify origin user AM-Ankitgit
-          dvc remote modify origin password "${DAGSHUB_TOKEN}"
-
-      - name: Set MLflow Tracking Environment Variables
-        run: echo "MLflow config exported"
+      - name: Run DVC pipeline
         env:
-          MLFLOW_TRACKING_URI: https://dagshub.com/AM-Ankitgit/Water_Portability_ML_Pipeline_DVC_MLOPS.mlflow
-          MLFLOW_TRACKING_USERNAME: AM-Ankitgit
-          MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
-
-      # - name: Pull DVC Data
-      #   run: dvc pull
-
-      - name: Run DVC Pipeline
-        run: dvc repro
-
-      # - name: Push Results to DVC Remote
-      #   run: dvc push
+          DAGSHUB_PAT: ${{ secrets.DAGSHUB_TOKEN }}
+        run: |
+          # Directly run the DVC pipeline without pulling
+          dvc repro
