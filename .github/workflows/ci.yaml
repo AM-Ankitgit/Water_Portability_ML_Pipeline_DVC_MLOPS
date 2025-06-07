@@ -18,11 +18,17 @@ jobs:
                         run: |
                             python -m pip install --upgrade pip
                             pip install -r requirements.txt
+                            pip install dvc
                       
-                      # - name: DVC Authentication with DagsHub
-                      #   run: |
+                      - name: DVC Authentication with DagsHub
+                        run: |
+                              dvc remote modify origin --local access_key_id 9a0cfdb8c9f9890d8d9e80455ae5918fcb9f4cb6
+                              dvc remote modify origin --local secret_access_key 9a0cfdb8c9f9890d8d9e80455ae5918fcb9f4cb6
                       #       dvc remote modify myremote account_name AM-Ankitgit
                       #       dvc remote modify password "${{ secrets.DAGSHUB_TOKEN }}"
+
+
+
 
 
                       - name: Run CI

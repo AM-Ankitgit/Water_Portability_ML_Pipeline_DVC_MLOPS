@@ -71,6 +71,9 @@ def main():
         
         import mlflow
         import dagshub
+        import os
+
+        
         dagshub.init(repo_owner='AM-Ankitgit', repo_name='Water_Portability_ML_Pipeline_DVC_MLOPS', mlflow=True)
         mlflow.set_experiment("RandomForest_Exp")
         mlflow.set_tracking_uri("https://dagshub.com/AM-Ankitgit/Water_Portability_ML_Pipeline_DVC_MLOPS.mlflow")
