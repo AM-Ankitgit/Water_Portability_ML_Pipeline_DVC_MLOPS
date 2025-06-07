@@ -22,7 +22,7 @@ jobs:
                       - name: DVC Authentication with DagsHub
                       
                         run: |
-                          dvc remote modify auth basic
+                          dvc remote modify basic
                           dvc remote modify user AM-Ankitgit
                           dvc remote modify password "${{ secrets.DAGSHUB_TOKEN }}"
 
