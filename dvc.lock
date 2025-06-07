@@ -63,8 +63,8 @@ stages:
       size: 276647
     - path: src/model/model_eval.py
       hash: md5
-      md5: 7ce0bf444e8b63cdba2a8702ee46f6f6
-      size: 3677
+      md5: 6c678ea17defc809f640a46bb5aff394
+      size: 3700
     outs:
     - path: reports/metrics_median.json
       hash: md5
