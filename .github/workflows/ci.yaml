@@ -21,9 +21,8 @@ jobs:
                       
                       - name: DVC Authentication with DagsHub
                         run: |
-                          dvc remote modify origin auth basic
-                          dvc remote modify origin user AM-Ankitgit
-                          dvc remote modify origin password "${{ secrets.DAGSHUB_TOKEN }}"
+                            dvc remote modify myremote account_name AM-Ankitgit
+                            dvc remote modify password "${{ secrets.DAGSHUB_TOKEN }}"
 
 
                       - name: Run CI
