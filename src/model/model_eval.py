@@ -59,10 +59,10 @@ def evaluation_model(model, X_test:pd.DataFrame, y_test:pd.Series) -> dict:
         import dagshub
         
         dagshub.init(repo_owner='AM-Ankitgit', repo_name='Water_Portability_ML_Pipeline_DVC_MLOPS', mlflow=True)
-        mlflow.set_experiment("TestingData Exp1")
+        mlflow.set_experiment("RandomForest_Exp")
         mlflow.set_tracking_uri("https://dagshub.com/AM-Ankitgit/Water_Portability_ML_Pipeline_DVC_MLOPS.mlflow")
         
-        with mlflow.start_run():
+        with mlflow.start_run(run_name='Testing Data'):
             mlflow.log_metric("acc",acc)
             mlflow.log_metric("pre",pre)
             mlflow.log_metric("recall",recall)
