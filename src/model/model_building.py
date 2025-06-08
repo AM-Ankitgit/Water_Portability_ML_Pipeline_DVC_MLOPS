@@ -62,8 +62,8 @@ def main():
         X_train, y_train = prepare_data(train_data)
 
         from sklearn.model_selection import RandomizedSearchCV
-        hyperameters = {'n_estimators':[10,20,30,40,60],
-                        'max_depth':[None,1,2,3,4,5,6,7,8]}
+        hyperameters = {'n_estimators':[10],
+                        'max_depth':[None,1]}
         
         clf = RandomForestClassifier()
 
@@ -73,10 +73,19 @@ def main():
         import dagshub
         import os
 
+        # THIS IS BROWSER BASED AUTHENTICATION
+        # dagshub.init(repo_owner='AM-Ankitgit', repo_name='Water_Portability_ML_Pipeline_DVC_MLOPS', mlflow=True)
+        # mlflow.set_experiment("Final_Model_1")
+        # mlflow.set_tracking_uri("https://dagshub.com/AM-Ankitgit/Water_Portability_ML_Pipeline_DVC_MLOPS.mlflow")
+
+        dagshub_token = os.getenv("DAGSHUB_TOKEN")
+        if not dagshub_token:
+            raise EnvironmentError("Token not found")
         
-        dagshub.init(repo_owner='AM-Ankitgit', repo_name='Water_Portability_ML_Pipeline_DVC_MLOPS', mlflow=True)
-        mlflow.set_experiment("RandomFor")
+        os.environ['MLFLOW_TRACKING_USERNAME'] = 'AM-Ankitgit'
+        os.environ['MLFLOW_TRACKING_PASSWORD'] = dagshub_token
         mlflow.set_tracking_uri("https://dagshub.com/AM-Ankitgit/Water_Portability_ML_Pipeline_DVC_MLOPS.mlflow")
+        mlflow.set_experiment("Final_Model_2")
         
         mlflow.autolog()
         with mlflow.start_run(run_name="Track result of all combination") as parents:
@@ -96,6 +105,13 @@ def main():
             best_random_clf.fit(X_train, y_train)
             save_model(best_random_clf, model_name)
             print("Model trained and saved successfully!")
+
+            import json
+            run_info = {'run_id': parents.info.run_id, 'model_name': "Best Model"}
+            reports_path = "reports/run_info.json"
+    
+            with open(reports_path, 'w') as file:
+                json.dump(run_info, file)
     except Exception as e:
         
         print(f"An error occurred: {e}")
