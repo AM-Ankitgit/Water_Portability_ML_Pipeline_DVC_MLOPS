@@ -23,6 +23,10 @@ stages:
     - model_building.n_estimators
     outs:
     - models/model_median.pkl
+    - reports/run_info.json
+
+    
+
   model_eval:
     cmd: python src/model/model_eval.py
     deps:
@@ -30,12 +34,12 @@ stages:
     - src/model/model_eval.py
     metrics:
     - reports/metrics_median.json
-    outs:
-    - reports/run_info.json 
+ 
+    
 
 
-  # model_registration:
-  #   cmd: python src/model/model_reg.py
-  #   deps:
-  #   - reports/run_info.json
-  #   - src/model/model_reg.py
+  model_registration:
+    cmd: python src/model/model_reg.py
+    deps:
+    - reports/run_info.json
+    - src/model/model_reg.py
