@@ -63,7 +63,10 @@ def evaluation_model(model, X_test:pd.DataFrame, y_test:pd.Series) -> dict:
         # mlflow.set_experiment("Final_Model_1")
         # mlflow.set_tracking_uri("https://dagshub.com/AM-Ankitgit/Water_Portability_ML_Pipeline_DVC_MLOPS.mlflow")
 
-
+        dagshub_token = os.getenv("DAGSHUB_TOKEN")
+        if not dagshub_token:
+            raise EnvironmentError("Token not found")
+        
         os.environ['MLFLOW_TRACKING_USERNAME'] = 'AM-Ankitgit'
         os.environ['MLFLOW_TRACKING_PASSWORD'] = dagshub_token
         mlflow.set_tracking_uri("https://dagshub.com/AM-Ankitgit/Water_Portability_ML_Pipeline_DVC_MLOPS.mlflow")
